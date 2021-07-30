@@ -1,3 +1,6 @@
+Student Wiki Migration
+
+Description:
 After performing 'migrater_skudal.py', the file structure with altered .md-files be present. 
 The example in 'pages_migrated_example' is derived from 'python migrater_skudal.py "pages" "./pages_migrated_example"
 Currently there is a problem with a few files. These are:
