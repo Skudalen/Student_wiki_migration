@@ -1,0 +1,24 @@
+Je to ovocie alebo zelenina ?
+Rastie to nad zemou alebo pod zemou ?
+Je to červené?
+* Paradajka.
+Dáva sa to do polievky ?
+Je to biele ?
+* Kaleráb 
+* Karfiol
+* Šalát
+Dáva sa to do polievky ?
+Je to biele?
+* Petržlen
+* Mrkva
+* Arašid
+Pestuje sa na Slovensku ?
+Rastie na strome ?
+Má pevnú šupku ?
+* Jablko
+* Kokos
+* Moruša
+Je to citrus?
+* Pomaranč
+* Banán
+

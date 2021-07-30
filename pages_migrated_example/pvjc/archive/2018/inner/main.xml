@@ -1,0 +1,991 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en">
+<info>
+<title>Programátorské minimum</title>
+<date>2018-01-25</date>
+</info>
+<chapter xml:id="_Úvod">
+<title>Úvod</title>
+<simpara>Jazyk C pre jednoducho uvažujúcich.</simpara>
+<simpara>Naučíte sa za 4 hodiny:</simpara>
+<orderedlist numeration="arabic">
+<listitem>
+<simpara>Napísať a preložiť triviálny program.</simpara>
+</listitem>
+<listitem>
+<simpara>Vypísať správu.</simpara>
+</listitem>
+<listitem>
+<simpara>Vytvoriť a inicializovať premennú.</simpara>
+</listitem>
+<listitem>
+<simpara>Načítať číslo zo štandardného vstupu.</simpara>
+</listitem>
+<listitem>
+<simpara>Navrhnúť funkciu s jedným parametrom, ktorá vracia jednu hodnotu.</simpara>
+</listitem>
+<listitem>
+<simpara>Zavolať vlastnú funkciu s jedným parametrom a uložiť návratovú hodnotu.</simpara>
+</listitem>
+<listitem>
+<simpara>Vypísať správu s parametrom.</simpara>
+</listitem>
+</orderedlist>
+<simpara>Predpokladáme, že máte počítač s nainštalovaným prekladačom, textovým editorom a viete spustiť príkazový riadok.</simpara>
+<simpara>Pre ešte väčšie zjednodušenie je možné použiť C Online IDE - nie je potrebné pracovať</simpara>
+<formalpara>
+<title>Príklad</title>
+<para>
+<programlisting language="c" linenumbering="unnumbered">#include &lt;stdio.h&gt;
+
+float mocnina(float);
+
+int main() {
+    printf("Mocninová kalkulačka\n");
+    float vysledok = 0;
+    printf("Výsledok je zatiaľ %f\n",vysledok);
+    char vstup[10];
+    printf("Zadaj hodnotu na max. 10 miest:");
+    fgets(vstup,10,stdin);
+    printf("Zadali ste %s\n",vstup);
+    float parameter = 0;
+    sscanf(vstup,"%f",&amp;parameter);
+    printf("Hodnota parametra je %f\n",parameter);
+    vysledok = mocnina(parameter);
+    printf("Výsledok je %f\n",vysledok);
+    return 0;
+}
+
+float mocnina(float arg){
+    float parameter = arg * arg;
+    return parameter;
+}</programlisting>
+</para>
+</formalpara>
+</chapter>
+<chapter xml:id="_Účel_svätí_prostriedky">
+<title>Účel svätí prostriedky</title>
+<simpara>Pripravde si prostredie a prostriedky na prácu</simpara>
+<simpara>Budete potrebovať:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>Textový editor alebo IDE</simpara>
+</listitem>
+<listitem>
+<simpara>Príkazový riadok</simpara>
+</listitem>
+<listitem>
+<simpara>Prekladač jazyka C (gcc)</simpara>
+<orderedlist numeration="arabic">
+<listitem>
+<simpara>Otvorte si textový editor.</simpara>
+</listitem>
+<listitem>
+<simpara>Napíšte zdrojový text.</simpara>
+</listitem>
+<listitem>
+<simpara>Preložte zdrojový text.</simpara>
+</listitem>
+<listitem>
+<simpara>Spustíte program.</simpara>
+</listitem>
+</orderedlist>
+</listitem>
+</itemizedlist>
+<simpara>Potrebné znalosti:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>Čo je to súbor a adresár.</simpara>
+</listitem>
+<listitem>
+<simpara>Aký je rozdiel medzi textovým a binárnym súborom</simpara>
+</listitem>
+<listitem>
+<simpara>Čo znamená vykonateľný súbor</simpara>
+</listitem>
+</itemizedlist>
+<section xml:id="_potrebné_nástroje">
+<title>Potrebné nástroje</title>
+<simpara>Pre tvorbu vlastných programov budeme potrebovať minimálne tieto tri nástroje:</simpara>
+<orderedlist numeration="arabic">
+<listitem>
+<simpara>Textový editor</simpara>
+</listitem>
+<listitem>
+<simpara>Kompilátor</simpara>
+</listitem>
+<listitem>
+<simpara>Textový terminál.</simpara>
+</listitem>
+</orderedlist>
+<simpara>Textový editor je program na vytváranie a úpravy textových súborov.
+Zdrojový kód píšeme ako textový súbor a preto je dôležité, aby sme boli schopní
+ľahko pracovať aj s veľkým množstvom textu. Výber vhodného textového
+editora je vecou osobnej preferencie. Pri práci v textovom termináli
+v prostredí OS Linux odporúčame textový editor vim.</simpara>
+<simpara>Kompilátor je program, pomocou ktorého preložíme zdrojový text do strojovo čitateľnej formy.
+Jedným z najčastejšie používaných kompilátorov je GCC (GNU Compiler Collection).
+Hoci je GCC veľmi zložitý systém, jeho použitie je jednoduché.
+Jazyk C patrí medzi tzv. <emphasis role="strong">kompilované</emphasis> jazyky.
+Znamená to, že pred spustením programu musí prebehnúť proces kompilácie (prekladu), pri ktorom sa človeku
+zrozumiteľný zápis prepíše do tvaru, ktorý je zrozumiteľný iba stroju.
+Výhody kompilovaného jazyka sú, že spustenie programu je rýchlejšie a sme schopní odhaliť niektoré chyby
+ešte pred tým ako program vyskúšame.</simpara>
+<simpara>Textový terminál je priestor interakcie programátora a počítača. Programátor píše sadu príkazov
+pre a systém odpovedá správami. Na začiatku sa Vám môže zdať práca v textovom móde málo intuitívna,
+ale ak sa terminál naučíte správne využívať, môžete pracovať oveľa efektívnejšie ako
+keď kombinujete klávesnicu a myš.</simpara>
+</section>
+<section xml:id="_prvé_kroky">
+<title>Prvé kroky</title>
+<simpara>Programátorskú prácu začneme tak, že si vyhliadneme vhodný prázdny  <emphasis role="strong">projektový adresár</emphasis>,
+kde budeme ukladať všetky súbory, ktoré súvisia s naším projektom.
+Na začiatku si vystačíme s dvoma súbormi (zdrojovým textom a spustiteľným súborom),
+ale postupom času budeme schopní pracovať s projektami, ktoré sa skladajú zo stoviek súborov.</simpara>
+<simpara>Aby sa situácia nestala príliš komplikovanou, odporúčame pre každý program vyhradiť osobitný adresár
+a nemiešať viacero programov v jednom.</simpara>
+</section>
+</chapter>
+<chapter xml:id="_ahoj_svet">
+<title>Ahoj Svet</title>
+<simpara>Cieľom tohto tutoriálu je naučiť vás vytvoriť triviálny program v jazyku C.</simpara>
+<simpara>Naučíte sa:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>Zdrojový kód je zápis algoritmu v programovacom jazyku.</simpara>
+</listitem>
+<listitem>
+<simpara>Programovací jazyk je súbor pravidiel pre zápis algoritmov.</simpara>
+</listitem>
+<listitem>
+<simpara>Spustiteľný kód získame spracovaním (prekladom) zdrojového kódu</simpara>
+</listitem>
+<listitem>
+<simpara>Spustiteľný kód je plnohodnotný program</simpara>
+</listitem>
+</itemizedlist>
+<section xml:id="_vytvorenie_zdrojového_textu">
+<title>Vytvorenie zdrojového textu</title>
+<simpara>V textovom editore si otvorme súbor, ktorý môžeme nazvať hello.c a do neho napíšeme:</simpara>
+<programlisting language="c" linenumbering="unnumbered">#include &lt;stdio.h&gt;
+
+int main(){
+	printf("Ahoj svet\n");
+	return 0;
+}</programlisting>
+<simpara>Textový súbor uložíme a prvý krôčik máme za sebou. Práve sme vytvorili svoj prvý program.</simpara>
+</section>
+<section xml:id="_preklad">
+<title>Preklad</title>
+<simpara>Náš program, je síce správny, ale počítač bude mať ťažkosti s jeho vykonaním.
+Zdrojový text v jazyku C nie je priamo vykonateľný.
+Našou ďalšou úlohou bude preklad zdrojového textu do tvaru, ktorý sa dá spustiť.
+Požitie kompilátora na zdrojový text, ktorý sme vytvorili je jednoduché:</simpara>
+<literallayout class="monospaced">gcc hello.c -o hello</literallayout>
+<simpara>Ak sme pri prepise neurobili žiadnu chybu,
+tak by preklad mal prebehnúť bez problémov a vznikne spustiteľný súbor hello.</simpara>
+</section>
+<section xml:id="_chybové_hlásenia">
+<title>Chybové hlásenia</title>
+<simpara>Ak sme predsa len nejakú chybu urobili, prekladač napíše chybovú hlášku a preklad neprebehne.
+Pozorne si hlásenie prečítajte a skúste opraviť chybu. Chybové hlásenie (skoro) vždy obsahuje číslo riadku a znak, kde sa chyba nachádza
+a podľa toho sa ku chybe vieme vrátiť. Ak je chybových hlásení viac, ignorujeme všetky okrem prvého.
+Opravíme prvú chybu, preložíme program a sledujeme, či oprava pomohla.
+Ak nie, postup opakujeme dovtedy, pokiaľ nie je preklad úspešný.</simpara>
+</section>
+<section xml:id="_spustenie_programu">
+<title>Spustenie programu</title>
+<simpara>Ak preklad prebehol správne, môžeme vyskúšať výsledok.
+Najprv overíme situáciu, či sa tam spustiteľný súbor naozaj nachádza:</simpara>
+<literallayout class="monospaced">ls
+   hello.c hello</literallayout>
+<simpara>Príkaz ls by mal zobraziť zdrojový súbor aj spustiteľný súbor. Spustiteľný súbor môžeme spustiť:</simpara>
+<literallayout class="monospaced">./hello
+   Ahoj svet-</literallayout>
+</section>
+<section xml:id="_vývojový_cyklus">
+<title>Vývojový cyklus</title>
+<simpara>Tento proces budeme opakovať stále dookola. V prvok kroku sme vytvorili alebo upravili existujúce zdrojové kódy.
+V druhom kroku sme sa pokúsili ich preložiť.
+Ak sa vyskytla chyba, tak sme sa museli vrátiť, znova upraviť zdrojové kódy a znova program preložiť.
+Posledným krokom vývojového cyklu je spustenie programu. Ak sme s výsledkom spokojní, nemusíme pokračovať a výsledný program
+môžeme odovzdať do používania. Ak nie, musíme začať znova.</simpara>
+<simpara>TODO: Vývojový diagram vývoja.</simpara>
+</section>
+<section xml:id="_Úprava_programu">
+<title>Úprava programu</title>
+<simpara>Ak aj spustenie prebehlo úspešne, môžem Vám gratulovať - práve ste sa stali
+(začínajúcim) programátorom. Náš prvý program je hotový.</simpara>
+<simpara>Základy sú síce vybudované, ale výsledná stavba je malá. Zatiaľ vieme slušne pozdraviť, ale to je všetko.
+Skúsime využiť vedomosti ktoré máme aby sme výsledok trochu vylepšili.
+Okrem sveta skúsme pozdraviť aj niekoho iného.</simpara>
+<simpara>Nájdime riadok v programe, ktorý pravdepodobne spôsobuje výpis
+správy na obrazovku a pozrime sa na neho bližšie:</simpara>
+<programlisting language="c" linenumbering="unnumbered">	printf("Ahoj svet\n");</programlisting>
+<simpara>Okrem správy "Ahoj svet" si všimneme niekoľko vecí, ktoré nám veľa povedia o jazyku C.
+- Riadok je zakončený bodkočiarkou. Takýto riadok nazývame <emphasis role="strong">príkaz</emphasis>.
+- Správa Ahoj svet je ohraničená úvodzovkami a zakončená znakmi '\n'.
+	Znaky ohraničené úvodzovkami nazývame <emphasis role="strong">reťazec</emphasis>.
+- Okrem správy, ktorá sa má vypísať tam vidíme printf a úvodzovky. Takýto zápis so zátvorkami nazývame <emphasis role="strong">volanie funkcie</emphasis>,
+	kde časť pred zátvorkou je <emphasis role="strong">názov funkcie</emphasis>  a časť v zátvorke sú <emphasis role="strong">argumenty funkcie</emphasis> .</simpara>
+<simpara>Program v jazyku C sa skladá z definícií funkcií a ich volaní. Každú funkciu v jazyku C musíme pred volaním definovať,
+lebo jazyk C ako taký nepozná žiadne funkcie, iba spôsob ako ich definovať a volať.</simpara>
+<simpara>V prípade funkcie printf je situácia jednoduchá, lebo funkciu už definoval niekto za nás. Nám už iba stačí
+"naučiť" kompilátor, čo znamená printf tým, že oznámime, kde definíciu funkcie nájde.</simpara>
+<simpara>Na overenie týchto tvrdení použijeme tzv. kreatívnu chirurgiu a mierne zmrzačíme
+náš program. Upravíme niektorý riadok programu a zopakujeme proces prekladu.
+S vedeckým odstupom sledujeme čo sa stane:</simpara>
+<orderedlist numeration="arabic">
+<listitem>
+<simpara>Zmente "svet\n" na "TUKE" Zistili sme, že "\n" je zápis pre koniec riadku.</simpara>
+</listitem>
+<listitem>
+<simpara>Zmente printf na print: Zistili sme, že takú funkciu systém nepozná. Opravte chybu a pokračujeme.</simpara>
+</listitem>
+<listitem>
+<simpara>Vymažte riadok s "include"</simpara>
+</listitem>
+</orderedlist>
+<simpara>Zistili sme, že napriek očakávaniam kompilátor hlási chybu na riadku s "printf".</simpara>
+<simpara>Zoznam funkcií, ktoré môžeme pri práci použiť sa nazýva "Štandardná knižnica jazyka C".</simpara>
+</section>
+<section xml:id="_Úlohy_na_precvičenie">
+<title>Úlohy na precvičenie:</title>
+<simpara>Modifikujte program tak, aby do prvého riadka vypísal Vaše meno a do druhého riadka Vašu obľúbenú farbu napr.:</simpara>
+<literallayout class="monospaced">Moje meno je Chuck Norris
+   a moja obľúbená farba je krvavo čierna.</literallayout>
+<simpara>Pozrite si dokumentáciu štandardnej knižnice a skúste využiť ľubovoľnú ďalšiu funkciu, napr. "sleep".
+Nezabudnite, že pred použitím musíte funkciu "naučiť" pomocou #include.</simpara>
+</section>
+</chapter>
+<chapter xml:id="_premeň_ma_premenné_a_dátové_typy">
+<title>Premeň ma! Premenné a dátové typy</title>
+<simpara>Tutoriál č. 2</simpara>
+<simpara>V druhom bloku sa naučíme využívať pamäť počítača.</simpara>
+<simpara>Potrebné znalosti z predošlého tutoriálu.</simpara>
+<simpara>Naučíte sa:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>Je možné uložiť hodnotu a tú neskôr použiť</simpara>
+</listitem>
+<listitem>
+<simpara>Každá hodnota má dátový typ.</simpara>
+</listitem>
+<listitem>
+<simpara>Dátové typy je možné meniť, má to ale vedľajšie efekty.</simpara>
+</listitem>
+<listitem>
+<simpara>Výpis premennej v rôznom formáte</simpara>
+</listitem>
+<listitem>
+<simpara>Rovnaký typ je možné vypisovať rôznymi spôsobmi</simpara>
+</listitem>
+<listitem>
+<simpara>aj číslo s desatinnou čiarkou vieme zapisovať rôznym spôsobom</simpara>
+</listitem>
+<listitem>
+<simpara>Čítať dokumentáciu funkcie printf</simpara>
+</listitem>
+</itemizedlist>
+<section xml:id="_celočíselná_premenná">
+<title>Celočíselná premenná</title>
+<simpara>V prvom kroku upravíme náš jednoduchý program:</simpara>
+<programlisting language="c" linenumbering="unnumbered">#include &lt;stdio.h&gt;
+
+int main(){
+	int pocitadlo  = 7;
+	printf("Ahoj svet\n",pocitadlo);
+	return 0;
+}</programlisting>
+<simpara>Pridali sme riadok, pomocou ktorého sme vytvorili pamäťové miesto s názvom
+"pocitadlo". Číslo v pamäťovom meiste vieme podľa ľubovôle meniť, preto ho nazývame
+<emphasis role="strong">premenná</emphasis>.</simpara>
+<simpara>Pozrime sa bližšie na príkaz pomocou ktorého vytvárame premennú:</simpara>
+<literallayout class="monospaced">int pocitadlo  = 7;</literallayout>
+<simpara>Prvá vec, ktorú si všimneme je slovíčko <emphasis role="strong">int</emphasis>. Týmto slovičkom
+označujeme <emphasis role="strong">dátový typ</emphasis> s ktorým pracujeme. Dátových typov je niekoľko,
+v tomto prípade pracujeme c celými číslami (integer). Celočíslelný dátový typ nám umožňuje pracovať
+s celými číslami.</simpara>
+<simpara>Druhým slovíčkom za dátovým typom je <emphasis role="strong">názov premennej</emphasis>. Názov premennej funguje podobne ako
+menovka na poštovej schránke alebo názov políčka vo formulári. Pomocou názvu premennej vykonávame všetky operácie.</simpara>
+<simpara>Tretím slovíčkom na radku je symbol =. V klasickom matematickom zápise to znamená znamienko rovnosti. V zápise jazyka C je ale význam úplne iný
+a znamená operáciu <emphasis role="strong">priradenia</emphasis>. V tomto prípade sa do premennej s názvom pocítadlo priradí (zapíše) hodnota 7.</simpara>
+</section>
+<section xml:id="_výpis_premennej">
+<title>Výpis premennej</title>
+<simpara>To, že si vieme zapamätať nejaké číslo je síce skvelé, ale samo o sebe zbytočné. Aby boli premenné naozaj užitočném potrebujeme
+s premennou vykonávať nejaké operácie. Pozrime sa bližšie na riadok s príkazom na výpis an obrazovku a
+modifikujem ho tak, aby vypisoval aj hodnotu premennej:</simpara>
+<literallayout class="monospaced">printf("Počítadlo má hodnotu %d\n", pocitadlo);</literallayout>
+<simpara>V riadku s príkazom na výpis správy sme za čiarku pridali ďalší argument s menom premennej
+ktoú máme zahrnúť do výpisu. Znaky medzi úvodzovkami obsahujú správu
+ktorá sa má vypísať a znaky, ktoré zastupujú hodnotu premennej na výpis.
+Zástupné znaky vyjadrujú akým spôsobom sa má premenná vypísať,
+v tomto prípade "%d" znamená výpis vo forme celého čísla.</simpara>
+<simpara>#=== Úloha na vyriešenie:</simpara>
+<simpara>Preštudujte si formátovacie reťazce pre funkciu printf a vypíšte
+hodnotu premennej na minimálne zadaný počet miest, chýbajúce znaky doplňte nulami.</simpara>
+</section>
+<section xml:id="_inicializácia_premennej">
+<title>Inicializácia premennej</title>
+<simpara>Skúste upraviť program nasledovným spôsobom
+(vynecháme operáciu priradenia):</simpara>
+<programlisting language="c" linenumbering="unnumbered">#include &lt;stdio.h&gt;
+
+int main(){
+	int pocitadlo;
+	printf("Ahoj %d\n",pocitadlo);
+	return 0;
+}</programlisting>
+<simpara>Zistili sme, že na prvý pohľad síce program pracuje normálne, ale nie je jasné
+aká hodnota bude v premennej počítadlo.</simpara>
+<simpara>Keďže sme žiadnu hodnotu do premennej nepriradili a v ďalšom riadku túto neznámu hodntu využívame,
+program sa správe nepredvídateľné. Ak do premennej žiadnu hodnotu nepriradíme tak jej hodnota závisí
+od toho, akú pamäť nám operačný systém pridelil. V premennej môže byť hodnota nula, ale aj akákoľvek iná hodnota
+ktorú nevieme predvídať.
+Na skutočnosť, že pracujeme s nedefinovanou hodnotou nás ale program nevie upozorniť a vyzerá to tak, že je všetko v poriadku.
+Je zospovednosťou programátora aby sa vyhol takýmo situáciám a využíval postupy a nástroje ktoré tomu zabránia.</simpara>
+</section>
+<section xml:id="_dátový_typ">
+<title>Dátový typ</title>
+<simpara>Dátový typ definuje možnosti a obmedzenia premennej s ktorou pracujeme.
+Premenná funguje podobne ako obrazovka na kalkulačke. Obrazovka na kalkulačke má určité obmedzenia ktoré
+sa podobajú obmedzeniam dátového typu - na kalkukulačke
+môžeme pracovať s číslami, ale nie s písmenami.
+Číslo na kalkulačke môžeme prečítať alebo ho zmeniť.
+Podľa typu kalkulačky s ním môžeme vykonávať sadu operácií - spočítavanie alebo násobenie.</simpara>
+<simpara>Do teraz napísaný program nám umožňuje prácu iba s celočíselnými hodnotami.
+Do celočíselnej premennej nie je možné uložiť hodnotu s desatinnou čiarkou.
+Pokiaľ sa o to pokúsime, hodnota za desatinnou čiarkou sa zanedbá a dôjde k zakorúhlenu smerom nadol.
+Na túto skutočnosť nás kompilátor nemusí upozorniť.</simpara>
+<simpara>Modifikujme náš program:</simpara>
+<programlisting language="c" linenumbering="unnumbered">#include &lt;stdio.h&gt;
+
+int main(){
+	int pocitadlo = 1.1;
+	printf("Ahoj %d\n",pocitadlo);
+	return 0;
+}</programlisting>
+<simpara>Aká hodnota sa vypíše?</simpara>
+<simpara>Zmeňme formát výpisu premennej na číslo s desatinnou čiarkou:</simpara>
+<programlisting language="c" linenumbering="unnumbered">#include &lt;stdio.h&gt;
+
+int main(){
+	int pocitadlo = 1.1;
+	printf("Ahoj %f\n",pocitadlo);
+	return 0;
+}</programlisting>
+<simpara>Pozitívna zmena nenastala, lebo stále platia obmedzenia pre celočíselný dátový typ. Na to aby sme
+správne vedeli pracovať s číslom s desatinnu čiarkou, musíme použiť vhodný dátový typ:</simpara>
+<programlisting language="c" linenumbering="unnumbered">#include &lt;stdio.h&gt;
+
+int main(){
+	float pocitadlo = 1.1;
+	printf("Ahoj %f\n",pocitadlo);
+	return 0;
+}</programlisting>
+<simpara>Dátový typ premennej a formát výpisu na obrazovku sú dve rozdielne veci. Aj keby sme zmenili formátovaciu značku na %d,
+obsah premennej pocitadlo to neovplyvní.</simpara>
+</section>
+<section xml:id="_operácie_s_dátovými_typmi">
+<title>Operácie s dátovými typmi</title>
+<simpara>Celočíselný dátový typ (int) je vhodný najmä ako počítadlo alebo na uchovávanie indexov.
+Nie je veľmi vhodný na matematické operácie ako napr. násobenie alebo delenie.
+Výsledkom delenia dvoch celých čísel je reálne číslo, a túto skutočnosť musíme brať do úvahy.
+Môžeme si to vyskúšať na jednoduchom matematickom programe, ktorý vykonáva operáciu delenia (/):</simpara>
+<programlisting language="c" linenumbering="unnumbered">#include &lt;stdio.h&gt;
+
+int main(){
+	int vysledok = 5 / 2;
+	printf("Ahoj %f\n",pocitadlo);
+	return 0;
+}</programlisting>
+<simpara>Keďže premenná vysledok má celočíselný dátový typ, je jasné, že výsledok nebude správny.
+Navyše, nepomôže ani intuitívna oprava:</simpara>
+<programlisting language="c" linenumbering="unnumbered">	float vysledok = 5 / 2;
+	printf("Ahoj %f\n",pocitadlo);</programlisting>
+<simpara>Dôvodom je to, že podľa štandardu je výsledkom delenia dvoch celých číslel opäť celé číslo,
+takže automaticky dochádza k zaokrúhľovaniu. Tento proces, keď prekladač zmení dátový typ bez nášho dovolenia sa nazýva <emphasis role="strong">implicitná dátová konverzia</emphasis>. Do premennej, ktorá je vhodná na uloženia čísla s desatinnou čiarkou (typ float)
+sa uloží už zaokrúhlená hodnota. Prekladač jazyka C musíme presvedčiť, že delíme čísla s desatinnou čiarkou:</simpara>
+<programlisting language="c" linenumbering="unnumbered">	float vysledok = 5.0 / 2.0;
+	printf("Ahoj %f\n",pocitadlo);</programlisting>
+<simpara>Teraz to už funguje správne.</simpara>
+</section>
+<section xml:id="_typová_konverzia">
+<title>Typová konverzia</title>
+<simpara>Matematické operácie vieme vykonávať aj s obsahom premennej, ktorý sme si zapamätali v predošlých krokoch.
+Stačí nahradiť číselné hodnoty v predošlom príklade názvami premenných, ktoré sme si inicializovali pred tým.</simpara>
+<programlisting language="c" linenumbering="unnumbered">    float podiel = delenec / delitel;
+	printf("Ahoj %f\n",pocitadlo);</programlisting>
+<simpara>Samozrejme, musíme definovať premenné "deliteľ" a "delenec", t.j. priradiť im vhodný dátový typ a počiatočnú hodnotu.
+Problém s dátovými typmi platí aj keď pracujeme s hodnotami, kotré sú uložené v premenných.
+Navyše, prvý pohľad na riadok, kde priradíme hodnotu do premennej "podiel",
+nám nič nepovie o tom, či operácia prebehne správne. Aby sme si boli istí, že delenie prebehne správne, musíme splniť tieto predpoklady:
+- obidva operandy musia mať typ s desatinnou čiarkou
+- deliteľ nesmie byť nula.</simpara>
+<simpara>Keby sme chceli správne deliť dva celé čísla, nemusíme dostať správny výsledok:</simpara>
+<programlisting language="c" linenumbering="unnumbered">	int delenec = 5;
+    int delitel = 2;
+    float podiel = delenec / delitel;
+	printf("Ahoj %f\n",pocitadlo);</programlisting>
+</section>
+<section xml:id="_Úloha_na_precvičenie">
+<title>Úloha na precvičenie</title>
+<simpara>Čo sa stane ak bude deliteľ nulový? Čo sa stane, ak budeme ďalej narábať s výsledkom delenia nulou?</simpara>
+</section>
+<section xml:id="_vyhodnotenie_operácií">
+<title>Vyhodnotenie operácií</title>
+<simpara>Aby sme si boli istý, že delenie dvoch premenných bolo správne, musíme vykonať tzv. <emphasis role="strong">explicitnú typovú konverziu</emphasis>:</simpara>
+<programlisting language="c" linenumbering="unnumbered">	int delenec = 5;
+    int delitel = 2;
+    float podiel = (float)delenec / (float)delitel;
+	printf("Ahoj %f\n",pocitadlo);</programlisting>
+<simpara>Typová konverzia je ďalšia operácia s premennými, ktorú pozná jazyk C. Do zátvorky uvededieme typ do ktorého chceme meniť.
+Prekladač vytvorí dočasné pamäťové miesto so zadaným dátovým typom do ktorého uloží hodnotu za zátvorkou.
+Toto dátové miesto s novým typom sa potom použije pri ďalších operáciach vo výraze.</simpara>
+<simpara>Operácia priradenia (=) je vyhodnocovaná v určitom poradí.
+Najprv sa vyhodnotí výraz (expression) na pravej strane  a výsledok sa uloží do premennej,
+ktorej názov sa nachádza na ľavej strane (lvalue).
+Iné pravidlá platia pre vyhodnocovanie operácie delenia. Najprv sa vyhodnotí výraz na ľavej strane, potom na pravej strane.</simpara>
+</section>
+<section xml:id="_kopírovanie_hodnoty">
+<title>Kopírovanie hodnoty</title>
+<simpara>Operácia priradenia je ekvivalentná operácii kopírovaniu hodnoty. Hodnotu z jednej premennej môžeme nakopírovať do druhej premennej
+a tam s ňou pracovať bez toho, aby to ovplyvnilo pôvodnú premennú. Napr. môžeme napísať:</simpara>
+<programlisting language="c" linenumbering="unnumbered">	int povodna = 5;
+    int nova = povodna;
+	printf("Ahoj %d\n",nova);</programlisting>
+<simpara>Zistili sme, že hodnota premennej povodna sa nakopírovala do premennej nova.
+Že ide naozaj o operáciu kopírovania si môžeme overiť tým, že zmeníme hodnotu
+pôvodnej premennej a sledujeme, či to ovplyvní hodnotu novej premennej.</simpara>
+<programlisting language="c" linenumbering="unnumbered">	int povodna = 5;
+    int nova = povodna;
+	printf("Nova hodnota je  %d\n",nova);
+    printf("Povodna hodnota je  %d\n",povodna);
+    povodna = 4;
+    printf("Po priredeni je povodna hodnota  %d\n",povodna);
+    printf("a nova hodnota stale je  %d\n",nova);</programlisting>
+</section>
+</chapter>
+<chapter xml:id="_funguj_návrh_a_používanie_vlastnej_funkcie">
+<title>Funguj - Návrh a používanie vlastnej funkcie</title>
+<simpara>Tutoriál č. 3</simpara>
+<simpara>V treťom bloku sa naučíme vytvárať a využívať vlastné funkcie.</simpara>
+<simpara>Potrebné znalosti z predošlého tutoriálu.</simpara>
+<simpara>Naučíte sa:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>volanie funkcie bez parametrov</simpara>
+</listitem>
+<listitem>
+<simpara>parametre funkcie</simpara>
+</listitem>
+<listitem>
+<simpara>volanie funkcie odovzdávanie parametrov kópiou</simpara>
+</listitem>
+<listitem>
+<simpara>návratová hodnota funkcie a jej využitie</simpara>
+</listitem>
+</itemizedlist>
+<section xml:id="_definícia_funkcie">
+<title>Definícia funkcie</title>
+<simpara>S vytváraním a využívaním funkcií v jazyku C sme sa už stretli, možno aj bez toho aby ste to vedeli.
+V našom hračkovom programe sme si už definovali vlastnú funkciu, ktorej sme dali meno main.</simpara>
+<programlisting language="c" linenumbering="unnumbered">#include &lt;stdio.h&gt;
+
+int main(){
+	printf("Ahoj svet\n");
+	return 0;
+}</programlisting>
+<simpara>Definícia funkcie sa skladá z nasledovných častí:
+- návratový typ (v tomto prípade int)
+- názov funkcie (v tomto prípade main)
+- argumenty funkcie (uvedené v okrúhlych zátvorkách, v tomto prípade žiadne)
+- telo funkcie (časť v zložených zátvorkách)</simpara>
+<simpara>Ak určíme nejaký návratový typ, tak sľubujeme prekladaču, že pomocou príkazu return vrátime hodnotu daného typu.
+Príkaz return spôsobí okamžité prerušenie vykonávania funkcie a funkcia vráti danú hodnotu, ktorú je možné ďalej spracovávať.
+Posledný príkaz</simpara>
+<literallayout class="monospaced">return 0;</literallayout>
+<simpara>ukončí vykonávanie hlavnej funkcie a operačnému systému odovzdá hodnotu 0.
+Ak ako návratový typ určíme void, neočakávame žiadnu návratovú hodnotu a príkaz return nemusíme uviesť.
+Tieto znalosti môžeme využiť a definovať si vlastnú funkciu pre výpis správy.</simpara>
+<programlisting language="c" linenumbering="unnumbered">#include &lt;stdio.h&gt;
+
+void pozdrav(){
+	printf("Dobry den\n");
+}
+
+int main(){
+	printf("Ahoj svet\n");
+	return 0;
+}</programlisting>
+<simpara>Čo sa stane? Preklad programu prebehne úspešne, to znamená, že program je syntakticky správny.
+Napriek očakávaniu ale zdvorilý pozdrav nebude vypísaný.</simpara>
+<simpara>#=== Ǔlohy na precvičenie:</simpara>
+<simpara>Ćo sa stane, keď vynecháme príkaz return z hlavnej funkcie? Čo sa stane, keď hlavnej funkcii určíme návratový typ void?</simpara>
+</section>
+<section xml:id="_volanie_funkcie">
+<title>Volanie funkcie</title>
+<simpara>Definícia funkcie je určitým spôsobom ekvivalentná k definícii slova v slovníku.
+Ak poznáme slovo, to ešte neznamená, že sme ho použili. Ak chceme definovanú funkciu aj použiť, musíme ju <emphasis role="strong">zavolať</emphasis>.
+Volanie funkcie bez parametrov  vykonáme zapísaním mena funnkcie a prázdnych okrúhlych zátvoriek.
+Každý príkaz musíme ukončiť bodkočiarkou.</simpara>
+<programlisting language="c" linenumbering="unnumbered">#include &lt;stdio.h&gt;
+
+void pozdrav(){
+	printf("Dobry den\n");
+}
+
+int main(){
+	pozdrav();
+	printf("Ahoj svet\n");
+	return 0;
+}</programlisting>
+<simpara>Zistili sme, že volanie vlastnej funkcie sa neodlišuje od volania funkcie zo štandardnej knižnice.
+Náš jednoduchý program neobsahuje príkaz na vykonanie funkcie main.
+Podľa dohody sa o niečo také stará operačný systém pri spustení programu.
+Operačný systém pri spustení programu vyhľadá definíciu funkcie main a tej odovzdá riadenie.
+Až potom sa vykonávajú funkcie, ktoré určil programátor.</simpara>
+</section>
+<section xml:id="_návratová_hodnota_a_argumenty_funkcie">
+<title>Návratová hodnota a argumenty funkcie</title>
+<programlisting language="c" linenumbering="unnumbered">void pozdrav(){
+	printf("Dobry den\n");
+}</programlisting>
+<simpara>Takto definovaná funkcia nemá definovanú návratový hodnotu. Výpis správy, ktorý funkcia vykoná je možné brať ako <emphasis role="strong">vedľajší efekt</emphasis>,
+ktorý nemá priamy súvis so vstupom funkcie.</simpara>
+<simpara>Funkciu si môžeme predstaviť ako kuchynského robota, ktorý vie spracovať určitý druh potravín.
+Vstupné argumenty sú suroviny, ktoré vkladáme do kuchynského robota.
+Návratový typ je výsledok spracovania vstupných surovín.
+Napríklad možným vstupom do mlynčeka na mäso je kus mäsa a výstupom je mleté mäso.
+Automatický mlynček na mäso bude mať problémy s niektorými surovinami.
+Napríklad orechy alebo hrozno na vstupe môžu spôsobiť zničenie robota alebo výstup nebude mať očakávané vlastnosti.</simpara>
+<simpara>Funkcia, ktorú sme definovali vyššie nemá definované vstupné argumenty ani výstupný typ.
+Funkciu si môžeme definovať tak, že výstupná hodnota závisí od vstupných argumentov.
+Vstupné argumenty sú definície premenných do ktorých sa priradí hodnota počas volania funkcie.
+Vstupné premenné uvedieme počas definície do okrúhlych zátvoriek a oddelíme ich čiarkou.</simpara>
+<programlisting language="c" linenumbering="unnumbered">int spocitaj(int a,int b){
+	return a + b;
+}</programlisting>
+<literallayout class="monospaced">Týmto kusom kódu sme definovali funkciu, ktorá vezme dva čísla, spočíta ich a vráti výsledok ako návratovú hodnotu.
+Takúto funkciu vieme použiť na ľubovoľné premenné alebo hodnoty, stačí ich zadať ako argumenty funkcie:</literallayout>
+<literallayout class="monospaced"> ```c
+#include &lt;stdio.h&gt;</literallayout>
+<simpara>int spocitaj(int a,int b){
+	return a + b;
+}</simpara>
+<simpara>int main(){
+	spocitaj(2,3);
+	return 0;
+}</simpara>
+<screen>Ak si vyskúšame takýto program, zistíme, že nie je veľmi užitočný. Napriek tomu, že vykonáme operáciu spočítania, výsledok sa nedostaví.
+Je to z toho dôvodu, že sme na to nedali príkaz. Program poslušne vykoná to, o čo sme ho požiadali, ale nič viac.
+Na to aby sme zobrazili návratovú hodnotu funkcie musíme pripraviť špeciálny príkaz. Najlepšie bude, ak si návratovú hodnotu uložíme
+do premennej a obsah premennej vypíšeme. Dávajme ale pozor, aby formátovacia značka sedela s typom premennej:
+
+ ```c
+#include &lt;stdio.h&gt;
+
+int spocitaj(int a,int b){
+	return a + b;
+}
+
+int main(){
+	int vysledok = spocitaj(2,3);
+    printf("Vysledok spocitania 2 + 3 je %d\n",vysledok);
+	return 0;
+}</screen>
+<simpara>Tento program je oveľa užitočnejší. Najprv si definujeme premennú výsledok a do nej si uložíme návratovú hodnotu funkcie spocitaj.
+Funkcia printf spôsobí výpis správy na obrazovku ako vedľajší efekt vykonania. Meno premennej, ktorá obsahuje hodnotu ktorá sa má vypísať uvedieme ako argument.
+Návratová hodnota funkcie printf nás nezaujíma, preto ju ignorujeme.
+Návratová hodnota celého programu bude 0, čo je signál operačnému systému, že je všetko v poriadku.</simpara>
+<simpara>Keďže už vieme definovať vlastné funkcie s argumentami aj pracovať s návratovými hodnotami, môžeme si definovať funkciu, ktorá
+spočíva ľubovoľné dve čísla a výsledok výpíše na obrazovku. Využijeme kód, ktorý už ovládame:</simpara>
+<programlisting language="c" linenumbering="unnumbered">#include &lt;stdio.h&gt;
+
+int spocitaj(int a,int b){
+	return a + b;
+}
+
+void vypis_sucet(int a,int b){
+	int vysledok = spocitaj(a,b);
+    printf("Vysledok spocitania %d + %d je %d\n",a,b,vysledok);
+}
+
+int main(){
+	vypis_sucet(4,5);
+	return 0;
+}</programlisting>
+<simpara>Nová funkcia vypis_sucet nemá definovanú návratovú hodnotu, preto je múžeme ignorovať. Vedľajší efekt spustenia bude vykonanmie
+operácie sčítania a výpis správy s výsledkom. Argumenty funkcie vypis_sucet sa správajú ako bežné premenné a tak ich aj môžeme využívať.</simpara>
+</section>
+<section xml:id="_Úloha_na_precvičenie_2">
+<title>Úloha na precvičenie</title>
+<simpara>Aký bude výsledok volania funkcie vypis_sucet(4.5,4.5) ?
+Aká bude návratová hodnota a čo sa vypíše na obrazovku?</simpara>
+</section>
+<section xml:id="_deklarácia_a_definícia_funkcie">
+<title>Deklarácia a definícia funkcie</title>
+<simpara>Pri definícii funkcií môžeme oddeliť časť</simpara>
+</section>
+</chapter>
+<chapter xml:id="_hoď_to_do_stroja_jednoduchý_vstup_z_klávesnice_a_podmienky">
+<title>Hoď to do stroja - Jednoduchý Vstup z klávesnice a podmienky</title>
+<simpara>Potrebné znalosti z predošlého tutoriálu.</simpara>
+<simpara>Naučíte sa:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>dátový typ reťazec</simpara>
+</listitem>
+<listitem>
+<simpara>parametre funkcie printf a sscanf</simpara>
+</listitem>
+<listitem>
+<simpara>Výpis čísla vlastne znamená jeho premenu na reťazec.</simpara>
+</listitem>
+<listitem>
+<simpara>Používať funkciu fgets a sscanf.</simpara>
+</listitem>
+<listitem>
+<simpara>čítať dokumentáciu funkcie fgets a sscanf.</simpara>
+</listitem>
+</itemizedlist>
+<simpara>V predošlom tutoráli sme sa naučli vytvoriť funkciu na spočítanie dvoch čísel a na výpis výsledku.
+V tomto bloku sa naučíme, ako vytvoriť interaktívny program, ktorý bude schopný požiadať používateľa o vstup,
+načítať zadanú hodnotu do premennej a vypísať výsledok.
+Naučíme sa aj bojovať s nezodpovednými používateľmi, ktorí testujú našu pozronosť a trpezlivosť
+a zadávajú niečo iné ako očakávame.
+Výsledkom bude kalkulačka, vhodná aj pre malé deti.</simpara>
+<section xml:id="_načítanie_z_klávesnice">
+<title>Načítanie z klávesnice</title>
+<simpara>Do teraz vytvorený program už je použiteľný ako jednoduchá kalkulačna, ale iba pre nás programátorov.
+Tento postup naozaj nie je vhodný pre každého. Bolo by fajn, keby s našou kalkulačkou vedela pracovať aj moja babka.</simpara>
+<simpara>Do teraz sme počiatočné hodnoty premenných určovali priamo v programe. Na to aby sme zmenili
+čísla na spočítanie, musíme zmeniť náš program na správnom mieste a zopakovať proces prekladu a spustenia.
+Slovo premenná je od slova meniť a preto skúsime zmeniť náš program tak, aby sa premenná vedela meniť počas behu.
+Požiadame používateľa o vstup krátkou správou, v ktorej mu vysvetlíme, čo od neho chceme:</simpara>
+<programlisting language="c" linenumbering="unnumbered">#include &lt;stdio.h&gt;
+
+int main(){
+	printf("Súčtová kalkulačka\n");
+	printf("Prosím zadajte prvý argument\n");
+    return 0;
+}</programlisting>
+<simpara>Vstup od používateľa sa v jazylu C dá riešiť rôznymi spôsobmi. Najjednoduchším (a zároveň najhoršim) spôsobom je využitie funkcie scanf.
+Zhodou okolností (ale nie náhodou) je použitie funkcie scanf veľmi podobné použitiu funkcie printf. Ako prvý argument
+zadávamie šablónu reťazca ktorý očakávame a druhý argument je <emphasis role="strong">adresa premennej</emphasis>, kde sa má uložiť výsledok. Adresu premennej z9skame
+pomocou operátora &amp;.</simpara>
+<literallayout class="monospaced">int vstup = 0;
+scanf("%d",&amp;vstup);</literallayout>
+<simpara>Takto si definujeme celočíselnú premennú vstup, do ktorej si uložíme počiatočnú hodnotu nula. V druhom príkaze voláme funkciu scanf,
+ktorá spôsobí to, že program čaká na celočíselný vstup od používateľa z klávesnice a ak je to možné, tak výsledok uloží na zadanej
+adresy premennej. Celý program s kalkulačkou môže vyzerať takto:</simpara>
+<programlisting language="c" linenumbering="unnumbered">#include &lt;stdio.h&gt;
+
+int spocitaj(int a,int b){
+	return a + b;
+}
+
+void vypis_sucet(int a,int b){
+	int vysledok = spocitaj(a,b);
+    printf("Vysledok spocitania %d + %d je %d\n",a,b,vysledok);
+}
+
+int main(){
+	printf("Súčtová kalkulačka\n");
+	printf("Prosím zadajte prvý argument\n");
+	int a;
+	scanf("%d",&amp;a);
+	printf("Prosím zadajte druhý argument\n");
+	vypis_sucet(a,b);
+	return 0;
+}</programlisting>
+<simpara>#=== Úloha na precvičenie</simpara>
+<simpara>Preložte program, spustite ho a dajte vyskúšať Vašej babke alebo päťročnému dieťaťu.
+Za akých podmienok program funguje správne a kedy nastáva zlyhanie?</simpara>
+</section>
+<section xml:id="_ošetrenie_vstupu">
+<title>Ošetrenie vstupu</title>
+<simpara>Po preskúšaní programu sme zistili, že program síce funguje správne, ale iba v prípadoch keď zadaný vstup
+vyhovuje formátovacej značke %d, teda celé číslo. Ak používateľ zadá niečo iné, výsledky nie sú podľa očakávania.
+Jedným z možných riešení je používateľa na túto skutočnosť dopredu upozorniť:</simpara>
+<literallayout class="monospaced">printf("Súčtová kalkulačka celých číslek\n");
+printf("Prosím zadajte prvý argument (ak nezadáte celé číslo, tak sa kalkulačka pokazí)\n");
+int a;
+scanf("%d",&amp;a);</literallayout>
+<simpara>Kalkulačka by sa mala správať tak, ako to používateľ očakáva, inak vznikne nespokojnosť na strane spotrebiteľa,
+môjho šéfa a v konečnom dôsledku aj moja nespokojnosť. Ani by som nebol veľmi šťastný, keby som si takúto kalkulačku kúpil.
+Pripomína mi to prístup niektorých úradov k oprave ciest.
+Namiesto vyasfaltovania dier pribudne značka s chrátom dvojhrbej ťavy alebo s obrázkom uja s lopatou.</simpara>
+<simpara>Skúsme urobiť kalkulačku odolnejšiu voči neočakávanému vstupu a overiť,
+či načítanie prebehlo úspešne. Aby sme to vedeli urobiť, musíme si bližšie prečítať dokumentáciu funkcie scanf.
+Zistíme, že návratová hodnota funkcie scanf nie je až taká nezaujímavá ako v prípade funkcie printf.</simpara>
+<simpara>Funkcia scanf vráti počet úspešne načítaných hodôt, čo je v našom prípade 1. Tútop skutočnosť môžeme využiť na to aby sme
+našu kalkulačku urobili odolnejšou voči neočakávanému vstupu. Ak používateľ nezadal správny reťazec, môžeme ho na túto skutočnosť upozorniť:
+Zapamätáme si návratovú hodnotu a môžeme ju vypísať:</simpara>
+<programlisting language="c" linenumbering="unnumbered">int a = 0;
+int pocet_hodnot = scanf("%d",&amp;a);
+printf("Pocet uspesne nacitanych hodnot je %d\n",pocet_hodnot);
+printf("Nacitana hodnota je %d\n",a);</programlisting>
+<simpara>Vieme síce zistiť, či nastal nesprávny vstup, ale nevieme s tým nič robiť.
+Aby sme vedeli ošetriť nesprávny vstup od používateľa, musíme napísať kód, ktorý sa vykoná iba v prípade, že používateľ zadal nesprávny vstup.
+Na to použijeme podmienku if.</simpara>
+</section>
+<section xml:id="_podmienka_if">
+<title>Podmienka if</title>
+<simpara>Jazyk C nám umožňuje napísať taký kód, kotrý sa spustí iba v prípade, že je splnená určitá podmienka.
+Používame na to kľúčové slovíčko <emphasis role="strong">if</emphasis> za ktorým do okrúhlych zátvoriek napíšeme podmienku. Nasledujúci príkaz alebo blok príkazov
+sa vykoná iba v prípade, že je podmienka pravdivá. Podmienka v zátvorke je pravdivá práve vtedy keď je nenulová.
+Tento kód ilustruje vytvorenie bloku kódu pomocou podmienky if, ktorý sa vykoná vždy:</simpara>
+<programlisting language="c" linenumbering="unnumbered">if (2) {
+	printf("Vykonam sa vzdy\n");
+}</programlisting>
+<simpara>Ak je výraz v zátvorke nulový, podmienka sa nevykoná. Nasledovný blok kódu v podmienike if sa nevykoná nikdy:</simpara>
+<programlisting language="c" linenumbering="unnumbered">if (0) {
+	printf("Nevykonam sa nikdy\n");
+}</programlisting>
+<simpara>Namiesto hodnoty môžeme do zátvorky napísať výraz, ktorý sa vyhodnotí na nulovú alebo nenulovú hodnotu:</simpara>
+<programlisting language="c" linenumbering="unnumbered">if (1 == 2) {
+	printf("Nevykonam sa lebo 1 sa nerovna 2\n");
+}</programlisting>
+<simpara>Podmienka if môže byť nasledovaná blokom else, kotrý sa vykoná v prípade, že podmienka nie je splnená:</simpara>
+<programlisting language="c" linenumbering="unnumbered">if (1 == 2) {
+	printf("Nevykonam sa lebo 1 sa nerovna 2\n");
+}
+else {
+	printf("Vzdy viem ze 1 sa nerovna 2\n");
+}</programlisting>
+<simpara>Operátor == znamená operáciu porovnania, ktorá ak je pravdivá tak vracia nenulovú hodnotu a ak je nepravdivá, tak vraciu nulu.
+Operácia != (nerovná sa) sa správa opačne ako operácia ==, vráti 1 v prípade,
+že dve hodnoty nie sú rovnaké a nulu v iných prípadoch.</simpara>
+</section>
+<section xml:id="_operátor_porovnania_a_operátor_priradenia">
+<title>Operátor porovnania a operátor priradenia</title>
+<simpara>Pozor, v jazyku C je operátor porovnania == rozdielny ako operátor priradenia =.
+Operácia priradenia vždy vracia nenulovú hodnotu a ako vedľajší efekt spôsobí kopírovanie do premennej na ľavej strane.
+Nasledovný kód sa teda nebude správať podľa očakávania:</simpara>
+<programlisting language="c" linenumbering="unnumbered">if (pocet_hodnot = 1){
+	printf("Hodnota pocet_hodnot je 1\n",a);
+}</programlisting>
+<simpara>Napísaná správa síce bude pravidvá, ale spôsobí to, že blok kódu v podmienke sa vykoná vždy a prepíše sa hodnota premennej.
+Takto napísaný kód je nesprávny. Oveľa lepšie je vždy v podmienke if využívať operáciu porovnania:</simpara>
+<programlisting language="c" linenumbering="unnumbered">if (pocet_hodnot == 1){
+	printf("Hodnota pocet_hodnot je 1\n",a);
+}</programlisting>
+<simpara>#=== Úlohy na precvičenie:</simpara>
+<simpara>Vykoná sa nasledovný blok kódu?</simpara>
+<programlisting language="c" linenumbering="unnumbered">if (-1) {
+	printf("Je -1 pravdivy vyraz?\n");
+}</programlisting>
+<simpara>Čo vypíše takéto volanie funkcie printf?</simpara>
+<programlisting language="c" linenumbering="unnumbered">printf("Hodnota pravdiveho vyrazu je %d",1==1);</programlisting>
+</section>
+<section xml:id="_vstup_s_ošetrením">
+<title>Vstup s ošetrením</title>
+<simpara>Už vieme napísať kód, ktorý sa vykoná iba je vstup od používateľa nesprávny. Program na kalkulačku si môžeme vylepšiť takto:
+Operátor porovnania môže využívať aj premenné, takže môžeme napísať:</simpara>
+<programlisting language="c" linenumbering="unnumbered">#include &lt;stdio.h&gt;
+
+int main(){
+	printf("Súčtová kalkulačka\n");
+	printf("Prosím zadajte prvý argument\n");
+    int a = 0;
+    // Nacita hodnotu pod pouzivatela do premennej a
+    // a vrati pocet nacitanych hodnot do pocet_hodnot
+	int pocet_hodnot = scanf("%d",&amp;a);
+	printf("Pocet uspesne nacitanych hodnot je %d\n",pocet_hodnot);
+    if (pocet_hodnot != 1){
+    	printf("")
+    }
+	printf("Nacitana hodnota je %d\n",a);
+    return 0;
+}</programlisting>
+<simpara>V tomto príklad vieme vykonať nejaký blok príkazov iba v prípade, že bola zadaná nesprávna hodnota.
+Celý príklad s ošetrením vstupu bude trochu zložitejší:</simpara>
+<programlisting language="c" linenumbering="unnumbered">#include &lt;stdio.h&gt;
+
+int spocitaj(int a,int b){
+	return a + b;
+}
+
+void vypis_sucet(int a,int b){
+	int vysledok = spocitaj(a,b);
+    printf("Vysledok spocitania %d + %d je %d\n",a,b,vysledok);
+}
+
+int main(){
+	printf("Súčtová kalkulačka\n");
+	printf("Prosím zadajte prvý argument\n");
+	int a = 0;
+    int pocet_hodnot = 0;
+	pocet_hodnot = scanf("%d",&amp;a);
+    if (pocet_hodnot == 1){
+		printf("Prosím zadajte druhý argument\n");
+        int b = 0;
+    	int pocet_hodnot = 0;
+		pocet_hodnot = scanf("%d",&amp;b);
+        if (pocet_hodnot == 1){
+        	vypis_sucet(a,b);
+        }
+        else {
+    		printf("Zle ste zadali druhy argument. Cakal som cele cislo.\n");
+    	}
+    }
+    else {
+    	printf("Zle ste zadali prvy argument. Cakal som cele cislo.\n");
+    }
+	return 0;
+}</programlisting>
+<simpara>Tento program má o niečo lepšie vlastnosti. Pomocou vetvenia if-else sme dosiahli,
+že funkcia na sčítanie sa bude volať iba v prípade, že obidve hodnoty boli zadané správne.
+Zabráni sa "pokazeniu" kalkulačky - vylúčili sme situáciu, keď bude program fungovať, ale
+nesprávne. Vďaka tomu si môžeme byť istý, že ak dostaneme výsledok tak bude správny.</simpara>
+</section>
+<section xml:id="_Úlohy_na_precvičenie_2">
+<title>Úlohy na precvičenie</title>
+<simpara>Vylepšite kalkulačku tak, aby vedela pracovať aj s číslami s desatinnou čiarkou.</simpara>
+</section>
+</chapter>
+<chapter xml:id="_bicyklová_reťaz_cykly_a_reťazce">
+<title>Bicyklová reťaz: cykly a reťazce</title>
+<simpara>Pomocou našich zázračných programátorských schoností sme boli schopní vo veľmi krátkom čase
+navrhnúť a implementovať kalkulačku vhodnú aj pre netechnické typy.
+Stále tam však zostávajú viaceré nedostatky.
+V prípade, že zadáme nesprávny vstup, musíme celý proces začať od znova.</simpara>
+<simpara>V tejto kapitole upravíme kalkulačku tak, aby sa nevzdávala pri prvom neúspechu,
+ale vytrvalo prosila o správny vstup až kým sa to nepodarí. Na to využijeme cyklus typu while,
+ktorý bude prebiehať dovtedy, pokiaľ je splnená podmienka:</simpara>
+<literallayout class="monospaced">while(1){
+   	printf("Ja neprestanem\n");
+   }</literallayout>
+<simpara>Zápis cyklu typu while je veľmi podobný podmienke if, hlavný rozdiel je v tom, že telo cyklu
+môže byť vykonané viac krát (pokiaľ platí podmienka).
+Podmienka je splnená ak je vyhodnotená na nenulovú hodnotu, takže takýto cyklus bude
+priebiehať do nekonečna (alebo pokiaľ nezrušíme celý proces).</simpara>
+<simpara>Ak vieme napísať cyklus, nebude problém modifikovať program tak, aby požiadavka na vstup
+prebiehala dovtedy, pokiaľ nebude vstup správny. Inými slovami, ak bide vstup nesprávny tak sa bude požiadavka
+opakovať. Aby nám cyklus prebehol aspoň raz,
+nastavíme počiatočnú hodnotu premennej pocet_hodnot na nulovú hodnotu.</simpara>
+<programlisting language="c" linenumbering="unnumbered">#include &lt;stdio.h&gt;
+
+int spocitaj(int a,int b){
+	return a + b;
+}
+
+void vypis_sucet(int a,int b){
+	int vysledok = spocitaj(a,b);
+    printf("Vysledok spocitania %d + %d je %d\n",a,b,vysledok);
+}
+
+int main(){
+	printf("Súčtová kalkulačka\n");
+	int pocet_hodnot = 0;
+    int a = 0;
+    while (pocet_hodnot != 1){
+		printf("Prosím zadajte prvý argument\n");
+    	pocet_hodnot = scanf("%d",&amp;a);
+    }
+    int b = 0;
+    pocet_hodnot = 0;
+    while (pocet_hodnot != 1){
+		printf("Prosím zadajte druhý argument\n");
+    	pocet_hodnot = scanf("%d",&amp;b);
+    }
+    vypis_sucet(a,b);
+	return 0;
+}</programlisting>
+<section xml:id="_Úloha_na_precvičenie_3">
+<title>Úloha na precvičenie</title>
+<simpara>Vyskúšajte si tento program a skúste zistiť, prečo sa program v prípade nesprávneho vstupu správa nečakane.
+Modifikujte tento program tak, aby v rípade nesprávneho vstupu o tom vypísal správu.</simpara>
+</section>
+<section xml:id="_načítanie_reťazca">
+<title>Načítanie reťazca</title>
+<simpara>Zistili sme, že takto napísaný program síce funguje skvele, ale iba v prípade že sa nevyskytnú "neočakávané" okolnosti
+(nesprávny vstup od používateľa). Dôvodom je to, že funkcia scanf nie je veľmi užitočná. Obsahuje vnúotorný buffer (pomocnú premmnnú),
+ktorá sa vyprázdni iba v prípade, že vstup z klávesnice bol správny. V prípade, že bol vstup nesprávny
+tak tam nesprávna hodnota ostane, až pokiaľ nebude spracovaná. Ďalšie volania funkcie scanf
+potom namiesto vstupu od používateľa stále pracujú s pôvodným, nesprávnym vstupom. Vyplýva z toho, že funkcia scanf
+je použiteľná iba na veľmi jednoduché príklady, ale nie je vhodná na reálne použitie.
+Našťastie, riešenie je pomerne jednoduché - naprogramovať si vlastný "buffer", do ktorého budeme ukladať vstup od používateľa.
+Premenu vstupu z klávesnice na číslo budeme vykonávať osobitne na vlastnom buffri.</simpara>
+<simpara>Zmena nášho programu bude taká, že namiesto celého čísla, ktoré je možné zapísať nesprávne budeme očakávať
+všeobecnejší typ <emphasis role="strong">reťazec</emphasis>.  Každý znak je v pamäti reprezetnovaný
+jedným kódom. Reťazec je sada znakov ukončená nulou.</simpara>
+<simpara>Klasické premenné v jazyku C umožnujú uloženie iba jednej hodnoty. Aby sme si mohli do premennej uložiť
+viac hodnôt, musíme o tom prekladaču povedať. Napríklad ak chceme "rozšíriť" celočíselnú premennú na viacero miest,
+môžeme napísať:</simpara>
+<literallayout class="monospaced">int viac_cisel[4];</literallayout>
+<simpara>Rozdiel od klasického zápisu deklarácie premennej (príkazu na vyhradenie pamäťového miesta)
+je použitie hranatých zátvoriek. Pomocou hranatých zátvoriek v deklarácii premennej vravíme prekladaču, aby
+vyhradil viac miest naraz. Vyhradeniu viacerých pamňťových miest rovnakého typu vedľa seba vravíme <emphasis role="strong">pole</emphasis>. Celé si to vieme predstaviť ako rebrík:</simpara>
+<simpara>OBRAZOK</simpara>
+<simpara>Pole si môžeme zostaviť z ľubovoľného dátového typu, napr. float. Na uloženie znaku je v jayzku C najvhodnejší typ char.
+Keďže reťazec je pole znakov zakončené nulou, pamäť pre uchovanie 10 znakového reťazca si vyhradíme takto:</simpara>
+<literallayout class="monospaced">char retazec[11];</literallayout>
+<simpara>Posledné políčko poľa musíme vyhradiť pre zápis nuly na konci.</simpara>
+<simpara>Ak si chceme zapamätať ľubovoľný vstup od používateľa, môžeme zapísať:</simpara>
+<literallayout class="monospaced">char retazec[100];
+   printf("Zadajte hocijaký vstup:");
+   scanf("%s",retazec);
+   printf("Napísali ste: %s\n");</literallayout>
+<simpara>Formátovacím znakom pre načítanie reťazca je %s. Ďalším rozdielom je, že pri druhom argumente funkcei scanf
+nemusíme uviesť operátor &amp;, lebo <emphasis role="strong">názov poľa je zároveň adresou jeho prvého prvku</emphasis>. Slabinou thoto programu je,
+že používateľ nesmie zadať viac ako 99 znakov, inak sa zvyšné znaky zapíšu mimo vyhradenej pamäte.</simpara>
+</section>
+<section xml:id="_konverzia_reťazca_na_číslo">
+<title>Konverzia reťazca na číslo</title>
+<simpara>Zistili sme, že v jazyku C sú reťazec a číslo dve rozdielne veci. Zjednodušene môžme povedať, že reťazec je viac
+hodnôt vedľa seba, číslo je iba jediná hodnota.
+Na to aby sme so zadaný reťazcom vedeli vykonávať matematické operácie, musíme si ho premeniť na číslo.
+Tento krok do teraz robila za nás funkcia scanf, ktorá premieňala vstup na z klávesnice vo forme reťazca
+bez toho, aby sme o nejakých reťazcoch tušili. Zistili sme ale, že má určité obmedzenia, kotré je potrebné obísť.</simpara>
+<simpara>Riešenie je našťastie jednoduché - konverziu na číslo je močné jendoduchu vykonávať nie len z klávesnice,
+ale aj z hdoôt, kotré sme si poznačili pred tým do poľla. Slúži na to funkcia sscanf, ktorá sa správa rovnako ako funkcia scanf,
+ale namiesto klávesnice pracuje s reťazcom, ktorý jej zadáme ako argument. Netrpí teda problémom so zasekávajúcim sa buffrom.</simpara>
+<simpara>Konverziu reťazaca na číslo pomocou fiunkcie sscanf vykonávame takto:</simpara>
+<literallayout class="monospaced">int cislo = 0;
+   int pocet_hodnot = 0;
+   char retazec[10] = "12";
+   pocet_hodnot = sscanf(retazec,"%d",&amp;cislo);
+   printf("Vase cislo je %d",);</literallayout>
+</section>
+<section xml:id="_celý_program">
+<title>Celý program</title>
+<simpara>Celý program bude potom vyzerať takto:</simpara>
+<programlisting language="c" linenumbering="unnumbered">#include &lt;stdio.h&gt;
+
+int spocitaj(int a,int b){
+	return a + b;
+}
+
+void vypis_sucet(int a,int b){
+	int vysledok = spocitaj(a,b);
+    printf("Vysledok spocitania %d + %d je %d\n",a,b,vysledok);
+}
+
+int main(){
+	printf("Súčtová kalkulačka\n");
+	int pocet_hodnot = 0;
+    int a = 0;
+    char buffer[100];
+    while (pocet_hodnot != 1){
+		printf("Prosím zadajte prvý argument\n");
+    	scanf("%s",buffer);
+        pocet_hodnot = sscanf(buffer,"%d",&amp;a);
+    }
+    int b = 0;
+    pocet_hodnot = 0;
+    while (pocet_hodnot != 1){
+		printf("Prosím zadajte druhý argument\n");
+ 		scanf("%s",buffer);
+        pocet_hodnot = sscanf(buffer,"%d",&amp;b);
+    }
+    vypis_sucet(a,b);
+	return 0;
+}</programlisting>
+</section>
+</chapter>
+</book>

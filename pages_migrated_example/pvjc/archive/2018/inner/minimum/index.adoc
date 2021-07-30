@@ -1,0 +1,30 @@
+== Úvod
+
+Jazyk C pre jednoducho uvažujúcich. 
+
+Naučíte sa za 4 hodiny:
+
+. Napísať a preložiť triviálny program.
+. Vypísať správu.
+. Vytvoriť a inicializovať premennú.
+. Načítať číslo zo štandardného vstupu.
+. Navrhnúť funkciu s jedným parametrom, ktorá vracia jednu hodnotu.
+. Zavolať vlastnú funkciu s jedným parametrom a uložiť návratovú hodnotu.
+. Vypísať správu s parametrom.
+
+Predpokladáme, že máte počítač s nainštalovaným prekladačom, textovým editorom a viete spustiť príkazový riadok.
+
+
+Pre ešte väčšie zjednodušenie je možné použiť C Online IDE - nie je potrebné pracovať
+
+
+.Príklad
+[source, c]
+----
+include::minimum.c[]
+----
+
+
+
+
+

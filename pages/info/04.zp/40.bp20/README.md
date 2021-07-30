@@ -1,0 +1,174 @@
+---
+title: Bakalársky projekt 2019/2020
+published: true
+---
+
+# Bakalársky projekt 2019/2020
+
+- Vedúci:  Daniel Hládek 
+- odporúčaný čas konzultácie: štvrtok o 9:00
+- Oblasť výskumu: Spracovanie prirodzeného jazyka
+
+# Ciele
+
+- oboznámiť sa so základmi spracovania prirodzeného jazyka
+- naučiť sa pracovať s [odbornou literatúrou](../zp)
+
+# Výstupy
+
+- článok na vybranú tému
+- praktická aplikácia (demo, krátky program)
+- [Odovzdanie cez Moodle](https://moodle.tuke.sk/moodle35/course/view.php?id=872&noprocess) heslo je BP2019
+
+# Témy
+
+- Anotácia lingvistického korpusu : Andrej Hopko
+- Identifikácia pomenovaných entít v slovenskom jazyku: Ediz Morochovič (študent na mobilite)
+- Identifikácia pomenovaných entít v prirodzenom jazyku s pomocou neurónových sietí: Kyryl Kobzar
+- Rekurentné neurónové siete pre jazykové modelovanie a generovanie prirodzeného jazyka: Stanislav Matsunych
+- Jednoduchý chatbot v jazyku Python: Dymitro Ushatenko
+- Automatická oprava preklepov: Peter Maľar
+
+# Stretnutia
+
+- 10.10 - Hopko, Matsunych, Kobzar
+- 17.10 - Hopko, Pavlišin, Matsunych, Kobzar, Ushatenko (Prečítať knihu, prejsť Spacy tutoriál, nainštalovať Anaconda)
+- 21.10. - Maľar
+- 24.10 - Pracovná cesta
+- 28.10 o 9:30 -
+- 31.10 - Dekanské voľno
+- 4.11. - Hopko
+- 7.11 - Maľar, Ushatenko
+- 14.11 - Odovzdanie draftu reportu
+
+# Andrej Hopko
+
+- Práca pomocou "Anaconda Prompt"
+- Vyskúšať "python -m spacy" podľa tutoriálu na stránke
+- Oboznámiť sa s https://prodi.gy/ (využíva spacy) a nainštalovať (python wheel)
+
+28.10
+
+- Na idoc.fei.tuke.sk nainštalovať [Minoconda](https://repo.anaconda.com/miniconda/)
+- pozrite si  "python virtualenv" a [prostredia conda](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
+
+Cieľ:
+
+- Vedieť pripraviť textové dáta na anotáciu pomocou Prodigy (textové dáta sa použijú na učenie systému)
+- V prvom semestri bude výstup: 
+- Oboznámiť sa "ako písať záverečnú pracu"
+- nainštalovaný systém prodigy
+- Vybratá dátová množina pripravená vo vhodnom formáte.
+- Pripravená anotačná uloha
+- Report o inštalácii Prodigy a príprave anotačnej úlohy na cca 3 strany použiteľný ako návod pre druhých - vysvetlite na čo sú potrebné anotácie a čo je crowdsourcing
+- V reporte spomente aspoň 3 odborné články na tému "crowdsourcing"
+- V druhom semestri - rešerš o príprave trénovacích dát a crowdsourcingu.
+
+# Stanislav Matsunych
+
+Pozrieť si  
+
+- https://medium.com/@shivambansal36/language-modelling-text-generation-using-lstms-deep-learning-for-nlp-ed36b224b275
+- https://towardsdatascience.com/character-level-language-model-1439f5dd87fe
+
+Prejsť si tutoriál http://karpathy.github.io/2015/05/21/rnn-effectiveness/
+
+Cielom je: 
+
+Vytvoriť jazykový model slovenského jazyka na báze rekurentných neurónových sietí
+
+- V prvom semestri bude výstup:
+- jednoduchý program na vytvorenie LM a generovanie znakov z neho
+
+- Vypracujte rešerš na tému "Rekurentné neurónové siete na tvorbu jazykových modelov " (LSTM, GRU) cca 10 strán
+
+V druhom semestri
+
+- dopracovanie práce
+
+
+# Kyryl Kobzar
+
+Cieľom je:
+
+Vedieť použiť nástroj Spacy na natrénovanie modelu a rozpoznávanie pomenovaných entít v texte v (anglickom) jazyku
+
+Zdroje dát
+
+https://lindat.mff.cuni.cz/repository/xmlui/
+
+https://lindat.mff.cuni.cz/repository/xmlui/discover?field=subject&filtertype=subject&filter_relational_operator=equals&filter=named+entity+recognition
+
+Výstup do prvého semestra:
+
+- Tutoriál na cca 3-4 strany ako natrénovať a použiť Spacy na rozpoznávanie pomenovaných entít
+- Rešerš na tému cca 10 strán : "Rozpoznávanie pomenovaných entít" - "named entity recognition", vystetlíte, čo to je, aké metódy sa používajú, ako sa to vyhodnocuje.
+
+V druhom semestri:
+
+- natrénovanie vlastného modelu na vlastných dátach
+- vyhodnotenie modelu
+- dokončenie práce
+
+
+# Dmytro Ushatenko
+
+Cieľ: 
+
+Vytvorenie jednoduchého chatbota s použitím toolkitu RASA ktorý bude informovať o zvolenej téme,
+napr. o predmetoch štúdia prvého ročníka programu PS na KEMT:
+
+Pomôcka pre začínajúcich študentov:
+
+- Čo mám robiť?
+- Aké predmety budem študovať?
+- Ako skončím predmet? (potrebujem zápočet a skúšku)
+
+
+Úlohy na tento semester:
+
+- Prejdite si tutoriál https://rasa.com/docs/rasa/user-guide/rasa-tutorial/
+- Pripravte jednoduchý dialógový systém
+- Pripravte "návod na použitie", kde zapíšete čo ste spravili v tutoriáli
+- Vylepšite Vašu rešerš, dajte dôraz na citovanie zdrojov a na jazykovú stránku.
+
+
+V druom semestri:
+
+- pripravíte si celé demo
+- dookončíte prácu
+
+# Peter Maľar
+
+
+Cieľ:
+
+Vytvoriť jednoduchý systém na opravu preklepov na báze neurónových sietí
+
+Úlohy na tento semester:
+
+- Naštudovať si článok "Sequence to sequence spelling correction..."
+- Nainštalovať a vyskúšať [fairseq](https://github.com/pytorch/fairseq)
+- Prejsť si tutoriál na strojový preklad https://github.com/pytorch/fairseq/blob/master/examples/translation/README.md
+- Vytvorte (prejdite krátky tutoriál - zapisujte čo ste urobili)
+- Skúsiť zopakovať experimenty s použitím systému
+- Vytvorte rešerš na tému "sequence to sequence systémy", "encoder-decoder" neurónové siete (5 strán, min. 5 odborných článkov)
+
+# Ediz Morochovič
+
+Zadanie BP:
+
+1. Vypracujte prehľad štatistických metód identifikácie pomenovaných entít v texte.
+2. Podrobne opíšte zvolenú metódu identifikácie pomenovaných entít v texte
+3. Zvoľte si vhodnú metodiku vyhodnotenia a na vhodnej testovacej množine navrhnite a vykonajte sadu experimentov.
+4. Na základe výsledkov experimentov navrhnite možné zlepšenia.
+
+Úlohy:
+
+- Nainštalujte si prostredie Anaconda https://www.anaconda.com/
+- Oboznámiť sa so zvoleným štatistickým systémom pre rozpoznávanie pomenovaných entít (https://www.nltk.org/), https://www.nltk.org/install.html, https://stanfordnlp.github.io/CoreNLP/, https://www.nltk.org/book/
+- Zistite použitú štatistickú metódu a podrobne ju opíšte
+- Vypracujte prehľad používaných štatistických metód (maximum entropy, conditional random fields, hidden markov models), min. 5 strán s min. 10 odkazmi na odborné články
+- Navrhnite experimenty a vykonajte ich s rôznymi parametrami systému
+
+

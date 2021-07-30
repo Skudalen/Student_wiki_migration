@@ -1,0 +1,1 @@
+# Prípravy na cvičenia
